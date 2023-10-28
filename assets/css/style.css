@@ -40,7 +40,7 @@ p {
   background-color: #ffffff;
   box-shadow: 0px 9px 40px rgba(148, 148, 148, 0.09);
   border-radius: 5px;
-  padding: 30px;
+  padding: 25px;
 }
 
 img {
@@ -55,6 +55,7 @@ img {
   text-align: center;
   max-width: 150px;
   margin-top: 20px;
+  display: flex;
 }
 
 .btn-main {
@@ -142,12 +143,17 @@ nav ul li a:hover {
 
 /* style bagian main */
 /*=========== main ===========*/
+main{
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  
+}
 /* container untuk tentang */
 #tentang-container {
   width: 90%;
-  margin: 0 auto;
+  margin: -120px auto 0;
   position: relative;
-  top: -160px;
   text-align: center;
 }
 
@@ -161,7 +167,8 @@ nav ul li a:hover {
 /* style untuk bagian aside */
 /* aside */
 aside {
-  width: 30%;
+  width: max-content;
+  max-width: 30%;
 }
 
 aside h1 {
@@ -170,14 +177,11 @@ aside h1 {
 
 aside article {
   display: flex;
+  row-gap: 15px;
   width: 100%;
   align-items: center;
   flex-direction: column;
   text-align: left;
-}
-
-aside #photoProfile {
-  margin-bottom: 30px;
 }
 
 aside #photoProfile img {
@@ -188,6 +192,20 @@ aside #photoProfile img {
   object-position: center;
 }
 
+aside .aside__biodata{
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+aside .aside__biodata section {
+  width: 100%;
+  text-align: left;
+}
+aside .aside__biodata section p:first-child {
+  color: #3c4355;
+  font-weight: 600;
+}
 /* style untuk bagian Content */
 /* Content */
 #content {
@@ -219,7 +237,16 @@ article#destinasi img {
 }
 
 article#destinasi .destinasiContent {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 20px;
+  padding: 25px;
+}
+
+article#destinasi .destinasiContent a{
+  margin-left: auto;
+  margin-top: 0;
 }
 
 /* Galeri */
@@ -231,6 +258,7 @@ article#destinasi .destinasiContent {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 .galeri-inner img {
@@ -241,17 +269,10 @@ article#destinasi .destinasiContent {
   transition: all 1s;
   cursor: pointer;
   border-radius: 5px;
-  margin: 10px;
 }
 
-.galeri-inner img:nth-child(1) {
-  flex-grow: 2;
-}
-
-.galeri-inner img:nth-child(4) {
-  flex-grow: 2;
-}
-
+.galeri-inner img:nth-child(1),
+.galeri-inner img:nth-child(4),
 .galeri-inner img:nth-child(5) {
   flex-grow: 2;
 }
@@ -270,7 +291,25 @@ footer {
   box-shadow: rgba(28, 38, 57, 0.168627) 0px 1px 4px;
 }
 
-/* style untuk versi mobile */
+/* style untuk versi desktop kecil */
+@media (max-width: 1024px) {
+  /* aside */
+  aside {
+    max-width: unset;
+  }
+  /* Galeri */
+  .galeri-inner img {
+    width: calc(50% - 10px);
+  }
+  
+  .galeri-inner img:nth-child(1),
+  .galeri-inner img:nth-child(4),
+  .galeri-inner img:nth-child(5) {
+    flex-grow: unset;
+  }
+}
+
+/* style untuk versi tablet */
 @media (max-width: 992px) {
   /* main style */
   p {
@@ -299,6 +338,7 @@ footer {
   /* container unutk aside dan content */
   #main-flex-container {
     flex-direction: column-reverse;
+    row-gap: 40px;
   }
 
   /* aside */
@@ -306,8 +346,18 @@ footer {
     width: 100%;
   }
 
-  aside table {
-    font-size: 14px;
+  aside article{
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  aside article .aside__biodata{
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  aside article .aside__biodata section{
+    width: calc(50% - 20px);
   }
 
   /* Content */
@@ -325,5 +375,39 @@ footer {
   article#destinasi img {
     width: 100%;
     height: 200px;
+  }
+
+  
+
+  
+}
+
+
+/* style untuk versi mobile */
+@media (max-width: 575px) {
+  /* Galeri */
+  .galeri-inner img {
+    width: 100%;
+  }
+
+  
+  /* aside */
+  aside {
+    width: 100%;
+  }
+
+  aside article{
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  aside article .aside__biodata{
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+  }
+  aside article .aside__biodata section{
+    width: 100%;
   }
 }
